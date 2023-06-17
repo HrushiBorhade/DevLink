@@ -3,10 +3,11 @@ import Link from "next/link";
 import { FC } from "react";
 import { buttonVariants } from "./ui/Button";
 import { ThemeToggle } from "./theme-toggle";
+import { getAuthSession } from "@/lib/auth";
+import UserAccountNav from "./UserAccountNav";
 
-interface NavbarProps {}
-
-const Navbar: FC<NavbarProps> = ({}) => {
+const Navbar = async () => {
+  const session = await getAuthSession();
   return (
     <div className="fixed inset-x-0 top-0 z-40 py-2 border-b bg-background h-fit">
       <div className="container flex items-center justify-between h-full gap-2 mx-auto max-w-7xl">
@@ -32,20 +33,23 @@ const Navbar: FC<NavbarProps> = ({}) => {
           >
             Sign In
           </Link> */}
-          <Link href="/sign-in">
-            <button className="relative inline-flex items-center justify-center p-0.5  overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-              <span className="relative px-6 py-2 transition-all duration-75 ease-in bg-white rounded-md dark:bg-gray-900 group-hover:bg-opacity-0">
-                Sign In
-              </span>
-            </button>
-            {/* <button
-              type="button"
-              className="px-5 py-2 text-sm font-medium text-center text-white rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 "
-            >
-              Sign In
-            </button> */}
-          </Link>
-          <ThemeToggle />
+          {session?.user ? (
+            <>
+              <ThemeToggle />
+              {/* <UserAccountNav user={session.user} /> */}
+            </>
+          ) : (
+            <>
+              <Link href="/sign-in">
+                <button className="relative inline-flex items-center justify-center p-0.5  overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                  <span className="relative px-6 py-2 transition-all duration-75 ease-in bg-white rounded-md dark:bg-gray-900 group-hover:bg-opacity-0">
+                    Sign In
+                  </span>
+                </button>
+              </Link>
+              <ThemeToggle />
+            </>
+          )}
         </div>
       </div>
     </div>
