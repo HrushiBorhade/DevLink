@@ -21,7 +21,7 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
       await signIn("google");
     } catch (error) {
       toast({
-        title: "Authorization Error",
+        title: "Error",
         description: "There was an error logging in with Google",
         variant: "destructive",
       });
@@ -31,12 +31,12 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
   };
 
   return (
-    <div className={cn("flex justify-center", className)} {...props}>
+    <div className={cn("flex justify-center mx-2 ", className)} {...props}>
       <Button
         isLoading={isLoading}
         type="button"
         size="sm"
-        className="w-full mx-2 my-2 rounded-xl"
+        className="w-full"
         onClick={loginWithGoogle}
         disabled={isLoading}
       >

@@ -36,7 +36,7 @@ const Navbar = async () => {
           {session?.user ? (
             <>
               <ThemeToggle />
-              {/* <UserAccountNav user={session.user} /> */}
+              <UserAccountNav user={session.user} />
             </>
           ) : (
             <>

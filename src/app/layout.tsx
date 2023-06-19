@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/Toaster";
+import Providers from "@/components/Providers";
 
 export const metadata = {
   title: "Devlink",
@@ -19,8 +20,10 @@ export const fontSans = FontSans({
 });
 export default function RootLayout({
   children,
+  authModal,
 }: {
   children: React.ReactNode;
+  authModal: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -32,10 +35,14 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <div className="container h-full pt-12 mx-auto max-w-7xl">
-            {children}
-          </div>
+          <Providers>
+            {/* @ts-expect-error Server Component */}
+            <Navbar />
+            {authModal}
+            <div className="container h-full pt-12 mx-auto max-w-7xl">
+              {children}
+            </div>
+          </Providers>
           <Toaster />
         </ThemeProvider>
       </body>
