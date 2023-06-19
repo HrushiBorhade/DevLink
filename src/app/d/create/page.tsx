@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { useCustomToast } from "@/hooks/use-custom-toast";
 import { toast } from "@/hooks/use-toast";
 import { CreateCommunityPayload } from "@/lib/validators/community";
 import { useMutation } from "@tanstack/react-query";
@@ -12,7 +13,7 @@ import { useState } from "react";
 const Page = () => {
   const router = useRouter();
   const [input, setInput] = useState<string>("");
-
+  const { loginToast } = useCustomToast();
   const { mutate: createCommunity, isLoading } = useMutation({
     mutationFn: async () => {
       const payload: CreateCommunityPayload = {
@@ -22,11 +23,40 @@ const Page = () => {
       const { data } = await axios.post("/api/community", payload);
       return data as string;
     },
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        if (error.response?.status === 409) {
+          return toast({
+            title: "Community already exists.",
+            description: "Please choose a different community name.",
+            variant: "destructive",
+          });
+        }
+        if (error.response?.status === 422) {
+          return toast({
+            title: "Invalid Community name.",
+            description: "Please choose a name between 3-21 characters.",
+            variant: "destructive",
+          });
+        }
+        if (error.response?.status === 401) {
+          return loginToast();
+        }
+      }
+      toast({
+        title: "Something went wrong",
+        description: "Failed to create community.Please try again",
+        variant: "destructive",
+      });
+    },
+    onSuccess: (data) => {
+      router.push(`/d/${data}`);
+    },
   });
 
   return (
     <div className="container flex items-center h-full max-w-3xl mx-auto ">
-      <div className="relative w-full p-8 space-y-6 border rounded-3xl h-fit">
+      <div className="relative w-full px-8 py-4 space-y-6 border rounded-3xl h-fit">
         <div className="flex items-center justify-between">
           <h1 className="text-lg font-semibold md:text-xl">
             Create a Community

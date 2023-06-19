@@ -4,7 +4,7 @@ import Link from "next/link";
 import UserAuthForm from "./UserAuthForm";
 const SignIn: FC = ({}) => {
   return (
-    <div className="container mx-auto flex flex-col  justify-center space-y-6 w-[360px]  p-2 py-6">
+    <div className="container mx-auto flex flex-col  justify-center space-y-6 max-w-[360px]  p-2 py-6">
       <div className="flex flex-col gap-2 space-y-2 text-center">
         <Image
           src="/logo.png"
