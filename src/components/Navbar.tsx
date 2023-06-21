@@ -9,7 +9,7 @@ import UserAccountNav from "./UserAccountNav";
 const Navbar = async () => {
   const session = await getAuthSession();
   return (
-    <div className="fixed inset-x-0 top-0 z-40 py-2 border-b bg-background h-fit">
+    <div className="fixed inset-x-0 top-0 z-40 py-2 border-b border-zinc-800 bg-background h-fit">
       <div className="container flex items-center justify-between h-full gap-2 mx-auto max-w-7xl">
         {/* logo */}
         <Link href="/" className="flex items-center gap-2">
