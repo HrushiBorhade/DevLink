@@ -72,25 +72,26 @@ const layout = async ({
             </div>
             <dl className="px-6 py-6 text-sm leading-6 divide-y divide-zinc-800 ">
               <div className="flex justify-between py-3 gap-x-4">
-                <dt className="text-zinc-600">Created</dt>
-                <dd className="text-zinc-600 ">
+                <dt className="">Created</dt>
+                <dd className="">
                   <time dateTime={community.createdAt.toDateString()}>
                     {format(community.createdAt, "MMMM d, yyyy")}
                   </time>
                 </dd>
               </div>
               <div className="flex justify-between py-3 gap-x-4">
-                <dt className="text-zinc-600">Members</dt>
+                <dt className="">Members</dt>
                 <dd className="flex items-start gap-x-2">
-                  <div className="text-zinc-600">{memberCount}</div>
+                  <div className="">{memberCount}</div>
                 </dd>
               </div>
               {community.creatorId === session?.user?.id ? (
                 <div className="flex justify-between py-3 gap-x-4">
-                  <dt className="text-zinc-600">You created this community</dt>
+                  <dt className="">You created this community</dt>
                 </div>
               ) : null}
-
+            </dl>
+            <div className="px-6 pb-4 ">
               {community.creatorId !== session?.user?.id ? (
                 <SubscribeLeaveToggle
                   isSubscribed={isSubscribed}
@@ -100,7 +101,7 @@ const layout = async ({
               ) : null}
               <Link
                 className={buttonVariants({
-                  variant: "default",
+                  variant: "outline",
                   className: "w-full mb-6 font-medium cursor-copy",
                 })}
                 href={`d/${slug}/submit`}
@@ -108,7 +109,7 @@ const layout = async ({
                 <PlusIcon className="w-4 h-4 mr-2 font-medium" />
                 Create Post
               </Link>
-            </dl>
+            </div>
           </div>
         </div>
       </div>

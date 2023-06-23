@@ -1,3 +1,4 @@
+import { Editor } from "@/components/Editor";
 import { Button } from "@/components/ui/Button";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
@@ -9,10 +10,10 @@ interface pageProps {
   };
 }
 
-const page = ({ params }: pageProps) => {
+const page = async ({ params }: pageProps) => {
   const { slug } = params;
 
-  const community = db.community.findFirst({
+  const community = await db.community.findFirst({
     where: {
       name: slug,
     },
@@ -24,7 +25,7 @@ const page = ({ params }: pageProps) => {
       {/* heading */}
       <div className="pb-5 ">
         <div className="flex flex-wrap items-baseline -mt-2 -ml-2">
-          <h3 className="mt-2 ml-2 text-3xl font-bold tracking-tighter text-gray-200 ">
+          <h3 className="mt-2 ml-2 text-2xl font-bold tracking-tighter ">
             Create post
           </h3>
           <p className="mt-1 ml-2 text-sm text-gray-500 truncate">
@@ -34,7 +35,7 @@ const page = ({ params }: pageProps) => {
       </div>
 
       {/* form */}
-      {/* <Editor subredditId={community.id} /> */}
+      <Editor communityId={community.id} />
 
       <div className="flex justify-end w-full">
         <Button

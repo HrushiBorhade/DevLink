@@ -7,6 +7,7 @@ import axios, { AxiosError } from "axios";
 import { useCustomToast } from "@/hooks/use-custom-toast";
 import { toast } from "@/hooks/use-toast";
 import { startTransition } from "react";
+import { Trash2 } from "lucide-react";
 
 interface SubscribeLeaveToggleProps {
   isSubscribed: boolean;
@@ -81,11 +82,12 @@ const SubscribeLeaveToggle = ({
   });
   return isSubscribed ? (
     <Button
-      className="w-full mt-1 mb-4 text-gray-400 "
-      variant="outline"
+      className="w-full mt-1 mb-4 border-b-2 "
+      variant="default"
       isLoading={isUnsubscribing}
       onClick={() => unsubscribe()}
     >
+      <Trash2 className="w-4 h-4 mr-1" />
       Leave Community
     </Button>
   ) : (
@@ -93,7 +95,7 @@ const SubscribeLeaveToggle = ({
       className="w-full mb-4"
       isLoading={isSubscribing}
       onClick={() => subscribe()}
-      variant="outline"
+      variant="default"
     >
       Join to Post🚀
     </Button>
