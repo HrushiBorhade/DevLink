@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-
+import { Info, PlusIcon } from "lucide-react";
 const layout = async ({
   children,
   params: { slug },
@@ -63,30 +63,31 @@ const layout = async ({
           <ul className="flex flex-col col-span-2 space-y-6">{children}</ul>
 
           {/* info sidebar */}
-          <div className="order-first overflow-hidden rounded-xl bg-zinc-900 h-fit md:order-last md:mt-20">
-            <div className="px-6 py-4 border-zinc-800 bg-gradient-to-r from-purple-700 via-purple-600 to-purple-600">
-              <p className="py-2 font-semibold text-gray-200 ">
+          <div className="order-first overflow-hidden border rounded-xl h-fit md:order-last">
+            <div className="px-6 py-4 ">
+              <p className="flex items-center py-2 font-semibold tracking-tight ">
+                <Info className="w-5 h-5 mr-2 font-semibold"></Info>
                 About d/{community.name}
               </p>
             </div>
-            <dl className="px-6 py-6 text-sm leading-6 divide-y divide-zinc-800 bg-zinc-900">
+            <dl className="px-6 py-6 text-sm leading-6 divide-y divide-zinc-800 ">
               <div className="flex justify-between py-3 gap-x-4">
-                <dt className="text-gray-500">Created</dt>
-                <dd className="text-gray-500 ">
+                <dt className="text-zinc-600">Created</dt>
+                <dd className="text-zinc-600 ">
                   <time dateTime={community.createdAt.toDateString()}>
                     {format(community.createdAt, "MMMM d, yyyy")}
                   </time>
                 </dd>
               </div>
               <div className="flex justify-between py-3 gap-x-4">
-                <dt className="text-gray-500">Members</dt>
+                <dt className="text-zinc-600">Members</dt>
                 <dd className="flex items-start gap-x-2">
-                  <div className="text-gray-500">{memberCount}</div>
+                  <div className="text-zinc-600">{memberCount}</div>
                 </dd>
               </div>
               {community.creatorId === session?.user?.id ? (
                 <div className="flex justify-between py-3 gap-x-4">
-                  <dt className="text-gray-500">You created this community</dt>
+                  <dt className="text-zinc-600">You created this community</dt>
                 </div>
               ) : null}
 
@@ -100,11 +101,12 @@ const layout = async ({
               <Link
                 className={buttonVariants({
                   variant: "default",
-                  className: "w-full mb-6  rounded-xl",
+                  className: "w-full mb-6 font-medium cursor-copy",
                 })}
                 href={`d/${slug}/submit`}
               >
-                Create Post🚀
+                <PlusIcon className="w-4 h-4 mr-2 font-medium" />
+                Create Post
               </Link>
             </dl>
           </div>

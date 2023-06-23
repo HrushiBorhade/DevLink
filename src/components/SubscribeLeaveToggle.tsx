@@ -81,7 +81,7 @@ const SubscribeLeaveToggle = ({
   });
   return isSubscribed ? (
     <Button
-      className="w-full mt-1 mb-4 text-gray-400 rounded-xl"
+      className="w-full mt-1 mb-4 text-gray-400 "
       variant="outline"
       isLoading={isUnsubscribing}
       onClick={() => unsubscribe()}
@@ -90,12 +90,12 @@ const SubscribeLeaveToggle = ({
     </Button>
   ) : (
     <Button
-      className="w-full mt-1 mb-4 text-gray-400 border rounded-xl"
+      className="w-full mb-4"
       isLoading={isSubscribing}
       onClick={() => subscribe()}
       variant="outline"
     >
-      Join to Post
+      Join to Post🚀
     </Button>
   );
 };

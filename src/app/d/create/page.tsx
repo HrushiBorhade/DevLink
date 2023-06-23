@@ -58,7 +58,7 @@ const Page = () => {
     <div className="container flex items-center h-full max-w-3xl mx-auto ">
       <div className="relative w-full px-8 py-4 space-y-6 border rounded-3xl h-fit">
         <div className="flex items-center justify-between">
-          <h1 className="text-lg font-semibold md:text-xl">
+          <h1 className="text-xl font-bold tracking-tighter md:text-2xl">
             Create a Community
           </h1>
         </div>

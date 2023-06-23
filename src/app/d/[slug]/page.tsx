@@ -39,7 +39,7 @@ const page = async ({ params }: pageProps) => {
   }
   return (
     <>
-      <h1 className="pt-2 text-2xl font-bold underline underline-offset-4 decoration-indigo-500 md:text-3xl h-14">
+      <h1 className="pt-2 text-2xl font-bold tracking-tight underline underline-offset-4 decoration-indigo-500 md:text-3xl h-14">
         d/{community.name}
       </h1>
       <MiniCreatePost session={session} />

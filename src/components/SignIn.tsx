@@ -13,14 +13,14 @@ const SignIn: FC = ({}) => {
           alt="logo"
           className="mx-auto my-2"
         />
-        <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
+        <h1 className="text-2xl font-bold tracking-tighter">Welcome back</h1>
         <p className="max-w-xs mx-auto text-xs text-center text-gray-400">
           By continuing, you are setting up a Devlink account and agree to our
           User Agreement and Privacy Policy
         </p>
         {/* Sign in Form */}
         <UserAuthForm />
-        <p className="px-8 my-2 text-sm text-center text-gray-400">
+        {/* <p className="px-8 my-2 text-sm text-center text-gray-400">
           New to Devlink?{" "}
           <Link
             href="/sign-up"
@@ -28,7 +28,7 @@ const SignIn: FC = ({}) => {
           >
             Sign Up
           </Link>
-        </p>
+        </p> */}
       </div>
     </div>
   );

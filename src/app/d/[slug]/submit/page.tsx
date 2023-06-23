@@ -24,8 +24,8 @@ const page = ({ params }: pageProps) => {
       {/* heading */}
       <div className="pb-5 ">
         <div className="flex flex-wrap items-baseline -mt-2 -ml-2">
-          <h3 className="mt-2 ml-2 text-xl font-bold text-gray-200 underline underline-offset-4 decoration-indigo-500">
-            Create Post
+          <h3 className="mt-2 ml-2 text-3xl font-bold tracking-tighter text-gray-200 ">
+            Create post
           </h3>
           <p className="mt-1 ml-2 text-sm text-gray-500 truncate">
             in d/{params.slug}
@@ -39,7 +39,7 @@ const page = ({ params }: pageProps) => {
       <div className="flex justify-end w-full">
         <Button
           type="submit"
-          className="w-full font-medium rounded-xl"
+          className="w-full font-medium cursor-copy"
           form="community-post-form"
         >
           Post
