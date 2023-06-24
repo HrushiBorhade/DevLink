@@ -48,7 +48,7 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
       communityId,
     }: PostCreationRequest) => {
       const payload: PostCreationRequest = { title, content, communityId };
-      const { data } = await axios.post("/api/subreddit/post/create", payload);
+      const { data } = await axios.post("/api/community/post/create", payload);
       return data;
     },
     onError: () => {
@@ -59,14 +59,13 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
       });
     },
     onSuccess: () => {
-      // turn pathname /r/mycommunity/submit into /r/mycommunity
       const newPathname = pathname.split("/").slice(0, -1).join("/");
       router.push(newPathname);
 
       router.refresh();
 
       return toast({
-        description: "Your post has been published.",
+        description: "Your post has been published🎉.",
       });
     },
   });
@@ -88,7 +87,7 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
         onReady() {
           ref.current = editor;
         },
-        placeholder: "Type here to write your post...",
+        placeholder: "Type here to share with the developer world...",
         inlineToolbar: true,
         data: { blocks: [] },
         tools: {
@@ -104,7 +103,6 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
             config: {
               uploader: {
                 async uploadByFile(file: File) {
-                  // upload to uploadthing
                   const [res] = await uploadFiles([file], "imageUploader");
 
                   return {
@@ -184,9 +182,9 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
   const { ref: titleRef, ...rest } = register("title");
 
   return (
-    <div className="w-full p-4 border rounded-lg">
+    <div className="w-full p-4 rounded-lg">
       <form
-        id="subreddit-post-form"
+        id="community-post-form"
         className="w-fit"
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -199,12 +197,14 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
             }}
             {...rest}
             placeholder="Title"
-            className="w-full overflow-hidden text-5xl font-bold bg-transparent appearance-none resize-none focus:outline-none"
+            className="w-full mb-1 overflow-hidden text-5xl font-bold tracking-tighter bg-transparent appearance-none resize-none focus:outline-none"
           />
-          <div id="editor" className="min-h-[300px]" />
+          <div id="editor" className="min-h-[300px] w-full" />
           <p className="text-sm text-gray-500">
             Use{" "}
-            <kbd className="px-1 text-xs uppercase border rounded-md ">Tab</kbd>{" "}
+            <kbd className="px-1 text-xs uppercase border rounded-md bg-muted ">
+              Tab
+            </kbd>{" "}
             to open the command menu.
           </p>
         </div>
