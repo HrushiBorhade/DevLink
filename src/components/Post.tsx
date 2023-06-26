@@ -1,10 +1,12 @@
 import { formatTimeToNow } from "@/lib/utils";
-import { Post, User, Vote } from "@prisma/client";
+import { Post, User, Vote, VoteType } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
+import PostVoteClient from "./post-vote/PostVoteClient";
 
+type PartialVote = Pick<Vote, "type">;
 interface PostProps {
   post: Post & {
     author: User;
@@ -13,14 +15,27 @@ interface PostProps {
 
   communityName?: string;
   commentAmt: number;
+  votesAmt: number;
+  currentVote?: PartialVote;
 }
 
-const Post: FC<PostProps> = ({ post, communityName, commentAmt }) => {
+const Post: FC<PostProps> = ({
+  post,
+  communityName,
+  commentAmt,
+  votesAmt,
+  currentVote,
+}) => {
   const pRef = useRef<HTMLParagraphElement>(null);
   return (
-    <div className="border rounded-md shadow">
+    <div className="border rounded-md shadow ">
       <div className="flex justify-between px-6 pt-4">
         {/* Todo: Votes */}
+        <PostVoteClient
+          postId={post.id}
+          initialVotesAmt={votesAmt}
+          initialVote={currentVote?.type}
+        />
         <div className="flex-1 w-0">
           <div className="mt-1 text-xs text-gray-500 max-h-40 dark:text-zinc-500">
             {communityName ? (
@@ -49,11 +64,12 @@ const Post: FC<PostProps> = ({ post, communityName, commentAmt }) => {
           >
             <EditorOutput content={post.content} />
             {pRef.current?.clientHeight === 160 ? (
-              <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-800 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-black to-transparent"></div>
             ) : null}
           </div>
         </div>
       </div>
+
       <div className="z-20 px-4 py-4 text-sm bg-gray-50 dark:bg-gray-900 sm:px-6 ">
         <Link
           href={`d/${communityName}/post/${post.id}`}
