@@ -12,9 +12,10 @@ import { toast } from "@/hooks/use-toast";
 import { uploadFiles } from "@/lib/uploadthing";
 import { PostCreationRequest, PostValidator } from "@/lib/validators/post";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import "@/styles/editor.css";
+import { useCustomToast } from "@/hooks/use-custom-toast";
 
 type FormData = z.infer<typeof PostValidator>;
 
@@ -35,6 +36,7 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
       content: null,
     },
   });
+  const { loginToast } = useCustomToast();
   const ref = useRef<EditorJS>();
   const _titleRef = useRef<HTMLTextAreaElement>(null);
   const router = useRouter();
@@ -51,10 +53,22 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
       const { data } = await axios.post("/api/community/post/create", payload);
       return data;
     },
-    onError: () => {
-      return toast({
-        title: "Something went wrong.",
-        description: "Your post was not published. Please try again.",
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        if (error.response?.status === 401) {
+          return loginToast();
+        }
+        if (error.response?.status === 400) {
+          return toast({
+            title: "Join Community to post.",
+            description: "Failed to post in community.Please try again.",
+            variant: "destructive",
+          });
+        }
+      }
+      toast({
+        title: "Something went wrong",
+        description: "Failed to create community.Please try again",
         variant: "destructive",
       });
     },

@@ -40,7 +40,7 @@ const page = async ({ params }: pageProps) => {
       <div className="flex justify-end w-full">
         <Button
           type="submit"
-          className="w-full font-medium cursor-copy"
+          className="w-full font-medium"
           form="community-post-form"
         >
           Post

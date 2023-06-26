@@ -63,14 +63,14 @@ const layout = async ({
           <ul className="flex flex-col col-span-2 space-y-6">{children}</ul>
 
           {/* info sidebar */}
-          <div className="order-first overflow-hidden border rounded-xl h-fit md:order-last">
-            <div className="px-6 py-4 ">
+          <div className="order-first overflow-hidden sm:border rounded-xl h-fit md:order-last md:mt-20">
+            <div className="hidden px-6 py-4 bg-gray-50 dark:bg-gray-900 sm:block">
               <p className="flex items-center py-2 font-semibold tracking-tight ">
                 <Info className="w-5 h-5 mr-2 font-semibold"></Info>
                 About d/{community.name}
               </p>
             </div>
-            <dl className="px-6 py-6 text-sm leading-6 divide-y divide-zinc-800 ">
+            <dl className="hidden px-6 py-6 text-sm leading-6 divide-y divide-zinc-800 sm:block">
               <div className="flex justify-between py-3 gap-x-4">
                 <dt className="text-gray-500">Created</dt>
                 <dd className="text-gray-500">
@@ -101,8 +101,8 @@ const layout = async ({
               ) : null}
               <Link
                 className={buttonVariants({
-                  variant: "outline",
-                  className: "w-full mb-6 font-medium cursor-copy",
+                  variant: "default",
+                  className: "w-full sm:mb-6 font-medium cursor-copy",
                 })}
                 href={`d/${slug}/submit`}
               >

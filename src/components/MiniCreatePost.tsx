@@ -35,7 +35,7 @@ const MiniCreatePost: FC<MiniCreatePostProps> = ({ session }) => {
           onClick={() => router.push(pathname + "/submit")}
           readOnly
           placeholder="Create post"
-          className="dark:border-zinc-800"
+          className="dark:border-gray-900"
         />
         <div className="flex">
           <Button
