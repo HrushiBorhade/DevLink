@@ -2,16 +2,22 @@ import { buttonVariants } from "@/components/ui/Button";
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 import { PlusIcon } from "lucide-react";
-const Home = () => {
+import { getAuthSession } from "@/lib/auth";
+import GeneralFeed from "@/components/GeneralFeed";
+import CustomFeed from "@/components/CustomFeed";
+const Home = async () => {
+  const session = await getAuthSession();
   return (
     <>
       <h1 className="text-3xl font-bold tracking-tighter md:text-4xl">
         Your feed
       </h1>
       <div className="grid grid-cols-1 py-6 md:grid-cols-3 gap-y-4 md:gap-x-4">
+        {/* @ts-expect-error server component */}
+        {session ? <CustomFeed /> : <GeneralFeed />}
         {/* community info */}
         <div className="order-first overflow-hidden border rounded-lg h-fit md:order-last">
-          <div className="px-6 py-4">
+          <div className="px-6 py-4 bg-gray-50 dark:bg-gray-900 ">
             <p className="font-semibold pt-3 flex items-center gap-1.5">
               <HomeIcon className="w-4 h-4" />
               Home

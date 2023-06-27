@@ -28,7 +28,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
     async ({ pageParam = 1 }) => {
       const query =
         `/api/posts?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` +
-        (!!communityName ? `&communityName=${communityName}` : "");
+        (!!communityName ? `&subredditName=${communityName}` : "");
 
       const { data } = await axios.get(query);
       return data as ExtendedPost[];
@@ -44,14 +44,14 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
 
   useEffect(() => {
     if (entry?.isIntersecting) {
-      fetchNextPage();
+      fetchNextPage(); // Load more posts when the last post comes into view
     }
   }, [entry, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
   return (
-    <div className="flex flex-col col-span-2 space-y-6">
+    <ul className="flex flex-col col-span-2 space-y-6">
       {posts.map((post, index) => {
         const votesAmt = post.votes.reduce((acc, vote) => {
           if (vote.type === "UP") return acc + 1;
@@ -64,26 +64,27 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
         );
 
         if (index === posts.length - 1) {
+          // Add a ref to the last post in the list
           return (
-            <div key={post.id} ref={ref}>
+            <li key={post.id} ref={ref}>
               <Post
-                communityName={communityName}
                 post={post}
                 commentAmt={post.comments.length}
+                communityName={post.community.name}
                 votesAmt={votesAmt}
                 currentVote={currentVote}
               />
-            </div>
+            </li>
           );
         } else {
           return (
             <Post
-              votesAmt={votesAmt}
-              currentVote={currentVote}
               key={post.id}
-              communityName={communityName}
               post={post}
               commentAmt={post.comments.length}
+              communityName={post.community.name}
+              votesAmt={votesAmt}
+              currentVote={currentVote}
             />
           );
         }
@@ -94,7 +95,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
           <Loader2 className="w-6 h-6 text-zinc-500 animate-spin" />
         </li>
       )}
-    </div>
+    </ul>
   );
 };
 

@@ -51,6 +51,7 @@ const Page = () => {
     },
     onSuccess: (data) => {
       router.push(`/d/${data}`);
+      router.refresh();
     },
   });
 

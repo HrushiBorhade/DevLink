@@ -10,7 +10,7 @@ const Page = () => {
     <div className="fixed inset-0 z-10" onClick={() => router.back()}>
       <div className="flex items-center w-full h-full backdrop-blur-md md:backdrop-blur-sm">
         <div
-          className="relative max-w-lg px-4 py-8 mx-auto border h-fit rounded-2xl"
+          className="relative max-w-lg  dark:bg-[#030612] px-4 py-8 mx-auto border h-fit rounded-2xl"
           onClick={(event) => event.stopPropagation()}
         >
           <div className="absolute top-4 right-4">
