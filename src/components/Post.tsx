@@ -49,24 +49,26 @@ const Post: FC<PostProps> = ({
                 <span className="px-1">•</span>
               </>
             ) : null}
-            <span>Posted by u/${post.author.username}</span>
+            <span>Posted by u/{post.author.username}</span>
             {"  "}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
           <a href={`/d/${communityName}/post/${post.id}`}>
-            <h1 className="py-2 text-lg font-semibold leading-6 tracking-tight text-gray-900 dark:text-gray-200">
+            <h1 className="py-2 mb-4 text-lg font-semibold leading-6 tracking-tight text-gray-900 dark:text-gray-200">
               {post.title}
             </h1>
           </a>
-          <div
-            className="relative w-full text-sm max-h-40 overflow-clip"
-            ref={pRef}
-          >
-            <EditorOutput content={post.content} />
-            {pRef.current?.clientHeight === 160 ? (
-              <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-[#030612] to-transparent"></div>
-            ) : null}
-          </div>
+          <a href={`/d/${communityName}/post/${post.id}`}>
+            <div
+              className="relative w-full text-sm max-h-40 overflow-clip"
+              ref={pRef}
+            >
+              <EditorOutput content={post.content} />
+              {pRef.current?.clientHeight === 160 ? (
+                <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-[#030612] to-transparent"></div>
+              ) : null}
+            </div>
+          </a>
         </div>
       </div>
 

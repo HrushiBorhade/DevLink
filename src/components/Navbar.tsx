@@ -43,9 +43,12 @@ const Navbar = async () => {
 
               <Link
                 href="/sign-in"
-                className={cn("font-semibold my-1", buttonVariants())}
+                className={cn(
+                  "font-semibold my-1",
+                  buttonVariants({ variant: "default" })
+                )}
               >
-                <LogIn className="w-4 h-4 mr-2 font-semibold" />
+                <LogIn className="hidden w-4 h-4 mr-2 font-semibold sm:block" />
                 Login
               </Link>
             </>

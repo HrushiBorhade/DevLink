@@ -5,6 +5,10 @@ import { PlusIcon } from "lucide-react";
 import { getAuthSession } from "@/lib/auth";
 import GeneralFeed from "@/components/GeneralFeed";
 import CustomFeed from "@/components/CustomFeed";
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
 const Home = async () => {
   const session = await getAuthSession();
   return (
