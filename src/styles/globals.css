@@ -13,11 +13,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
 
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
@@ -43,23 +43,23 @@
     --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
 
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
 
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
     --border: 216 34% 17%;
     --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 1.2%;
 
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -76,6 +76,51 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(
+      to right bottom,
+      rgb(255, 255, 255) 30%,
+      rgba(255, 255, 255, 0.38)
+    );
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-shadow {
+    text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
+  }
+  .mask-radial-faded {
+    mask-image: radial-gradient(
+      circle at center center,
+      black,
+      transparent 80%
+    );
+  }
+
+  .mask-linear-faded {
+    mask-image: linear-gradient(black, transparent 70%);
+  }
+
+  .mask-keyboard {
+    mask-image: linear-gradient(
+      transparent 0%,
+      rgba(0, 0, 0, 0.57) 33.98%,
+      black 100%
+    );
+  }
+
+  .mask-shortcutkeys {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 40%,
+      black calc(60%),
+      transparent 100%
+    );
   }
 }

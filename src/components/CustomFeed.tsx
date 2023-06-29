@@ -14,8 +14,8 @@ const CustomFeed = async ({}) => {
       community: true,
     },
   });
-
-  const posts = await db.post.findMany({
+  var posts;
+  posts = await db.post.findMany({
     where: {
       community: {
         name: {
@@ -34,6 +34,22 @@ const CustomFeed = async ({}) => {
     },
     take: INFINITE_SCROLLING_PAGINATION_RESULTS,
   });
+
+  if (posts.length === 0) {
+    posts = await db.post.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        author: true,
+        votes: true,
+        comments: true,
+        community: true,
+      },
+      take: INFINITE_SCROLLING_PAGINATION_RESULTS,
+    });
+  }
+
   return <PostFeed initialPosts={posts} />;
 };
 

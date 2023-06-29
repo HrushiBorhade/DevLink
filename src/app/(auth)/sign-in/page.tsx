@@ -8,10 +8,10 @@ const SignInPage: FC = ({}) => {
     <div className="absolute inset-0">
       <div className="flex flex-col items-center justify-center h-full max-w-2xl gap-20 mx-auto">
         <Link
-          href="/"
-          className="flex items-center self-start -mt-20 text-sm hover:underline hover:underline-offset-4 hover:decoration-indigo-500 "
+          href="/feed"
+          className="flex items-center self-start text-sm font-semibold hover:underline hover:underline-offset-4 hover:decoration-indigo-500 "
         >
-          <Icons.chevronLeft className="flex items-center w-3 h-3" />
+          <Icons.chevronLeft className="flex items-center w-3 h-3 font-semibold" />
           Back
         </Link>
         <SignIn />

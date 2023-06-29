@@ -50,7 +50,7 @@ const Page = () => {
       });
     },
     onSuccess: (data) => {
-      router.push(`/d/${data}`);
+      router.push(`/feed/d/${data}`);
       router.refresh();
     },
   });

@@ -42,7 +42,7 @@ const Post: FC<PostProps> = ({
               <>
                 <a
                   className="text-sm font-medium underline text-zinc-900 dark:text-white underline-offset-2 decoration-indigo-500 "
-                  href={`d/${communityName}`}
+                  href={`/feed/d/${communityName}`}
                 >
                   d/{communityName}
                 </a>
@@ -53,28 +53,27 @@ const Post: FC<PostProps> = ({
             {"  "}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
-          <a href={`/d/${communityName}/post/${post.id}`}>
+          <a href={`/feed/d/${communityName}/post/${post.id}`}>
             <h1 className="py-2 mb-4 text-lg font-semibold leading-6 tracking-tight text-gray-900 dark:text-gray-200">
               {post.title}
             </h1>
           </a>
-          <a href={`/d/${communityName}/post/${post.id}`}>
-            <div
-              className="relative w-full text-sm max-h-40 overflow-clip"
-              ref={pRef}
-            >
-              <EditorOutput content={post.content} />
-              {pRef.current?.clientHeight === 160 ? (
-                <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-[#030612] to-transparent"></div>
-              ) : null}
-            </div>
-          </a>
+
+          <div
+            className="relative w-full text-sm max-h-40 overflow-clip"
+            ref={pRef}
+          >
+            <EditorOutput content={post.content} />
+            {pRef.current?.clientHeight === 160 ? (
+              <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-[#030612] to-transparent"></div>
+            ) : null}
+          </div>
         </div>
       </div>
 
       <div className="z-20 px-4 py-4 text-sm bg-gray-50 dark:bg-gray-900 sm:px-6 ">
         <Link
-          href={`d/${communityName}/post/${post.id}`}
+          href={`/feed/d/${communityName}/post/${post.id}`}
           className="flex items-center gap-2 w-fit"
         >
           <MessageSquare className="w-4 h-4" /> {commentAmt} comments

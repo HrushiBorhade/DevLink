@@ -88,7 +88,7 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
     const EditorJS = (await import("@editorjs/editorjs")).default;
     const Header = (await import("@editorjs/header")).default;
     const Embed = (await import("@editorjs/embed")).default;
-    const Table = (await import("@editorjs/table")).default;
+
     const List = (await import("@editorjs/list")).default;
     const Code = (await import("@editorjs/code")).default;
     const LinkTool = (await import("@editorjs/link")).default;
@@ -132,7 +132,7 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
           list: List,
           code: Code,
           inlineCode: InlineCode,
-          table: Table,
+
           embed: Embed,
         },
       });
@@ -213,7 +213,7 @@ export const Editor: React.FC<EditorProps> = ({ communityId }) => {
             placeholder="Title"
             className="w-full mb-1 overflow-hidden text-5xl font-bold tracking-tighter bg-transparent appearance-none resize-none focus:outline-none"
           />
-          <div id="editor" className="min-h-[300px] w-full" />
+          <div id="editor" className="min-h-[300px] w-full " />
           <p className="text-sm text-gray-500">
             Use{" "}
             <kbd className="px-1 text-xs uppercase border rounded-md bg-muted ">

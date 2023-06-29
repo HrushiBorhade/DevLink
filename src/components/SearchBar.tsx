@@ -85,7 +85,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
               {queryResults?.map((community) => (
                 <CommandItem
                   onSelect={(e) => {
-                    router.push(`/d/${e}`);
+                    router.push(`/feed/d/${e}`);
                     router.refresh();
                   }}
                   key={community.id}

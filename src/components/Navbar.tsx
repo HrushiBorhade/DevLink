@@ -14,7 +14,7 @@ const Navbar = async () => {
     <div className="fixed inset-x-0 top-0 z-40 py-2 border-b dark:border-zinc-800 bg-background h-fit">
       <div className="container flex items-center justify-between h-full gap-2 mx-auto max-w-7xl">
         {/* logo */}
-        <Link href="/" className="flex items-center w-20 gap-2 md:w-fit ">
+        <Link href="/feed" className="flex items-center w-20 gap-2 md:w-fit ">
           <Image
             src="/logo.png"
             width={24}

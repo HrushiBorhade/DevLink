@@ -7,6 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { Info, PlusIcon } from "lucide-react";
+import ToFeedButton from "@/components/ToFeedButton";
 const layout = async ({
   children,
   params: { slug },
@@ -58,7 +59,7 @@ const layout = async ({
     <div className="h-full mx-auto sm:container max-w-7xl">
       <div>
         {/* <ToFeedButton /> */}
-
+        <ToFeedButton />
         <div className="grid grid-cols-1 py-6 md:grid-cols-3 gap-y-4 md:gap-x-4">
           <ul className="flex flex-col col-span-2 space-y-6">{children}</ul>
 
@@ -104,7 +105,7 @@ const layout = async ({
                   variant: "default",
                   className: "w-full sm:mb-6 font-medium cursor-copy",
                 })}
-                href={`d/${slug}/submit`}
+                href={`/feed/d/${slug}/submit`}
               >
                 <PlusIcon className="w-4 h-4 mr-2 font-medium" />
                 Create Post
