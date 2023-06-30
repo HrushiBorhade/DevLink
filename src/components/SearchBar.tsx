@@ -92,7 +92,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
                   value={community.name}
                 >
                   <Users className="w-4 h-4 mr-2" />
-                  <a href={`/d/${community.name}`}>d/{community.name}</a>
+                  <a href={`/feed/d/${community.name}`}>d/{community.name}</a>
                 </CommandItem>
               ))}
             </CommandGroup>
