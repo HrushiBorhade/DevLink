@@ -5,11 +5,11 @@ import { PlusIcon } from "lucide-react";
 import { getAuthSession } from "@/lib/auth";
 import GeneralFeed from "@/components/GeneralFeed";
 import CustomFeed from "@/components/CustomFeed";
-import { db } from "@/lib/db";
+
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
-import PostFeed from "../../components/PostFeed";
-// export const dynamic = "force-dynamic";
-// export const fetchCache = "force-no-store";
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 const Home = async () => {
   const session = await getAuthSession();
