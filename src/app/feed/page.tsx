@@ -5,9 +5,11 @@ import { PlusIcon } from "lucide-react";
 import { getAuthSession } from "@/lib/auth";
 import GeneralFeed from "@/components/GeneralFeed";
 import CustomFeed from "@/components/CustomFeed";
-
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
+import { db } from "@/lib/db";
+import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
+import PostFeed from "../../components/PostFeed";
+// export const dynamic = "force-dynamic";
+// export const fetchCache = "force-no-store";
 
 const Home = async () => {
   const session = await getAuthSession();
@@ -15,8 +17,8 @@ const Home = async () => {
     <>
       <h1 className="text-3xl font-bold font-heading md:text-4xl">Your feed</h1>
       <div className="grid grid-cols-1 py-6 md:grid-cols-3 gap-y-4 md:gap-x-4">
-        {/* @ts-expect-error server component */}
-        <GeneralFeed />
+        {/* @ts-ignore */}
+        {session ? <CustomFeed /> : <GeneralFeed />}
         {/* community info */}
         <div className="order-first overflow-hidden md:order-last">
           <div className="overflow-hidden border rounded-lg h-fit">
