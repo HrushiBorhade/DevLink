@@ -7,7 +7,8 @@ import Link from "next/link";
 import { FC } from "react";
 import Image from "next/image";
 import HeroImage from "@/components/MarketingPage/HeroImage";
-import Features from "@/components/MarketingPage/Features";
+import Tech from "@/components/MarketingPage/Tech";
+// import { EnjoyIssueTracking } from "@/components/MarketingPage/sections/ShowCase";
 
 interface pageProps {}
 
@@ -36,17 +37,16 @@ const page: FC<pageProps> = ({}) => {
               variant="primary"
               size="large"
             >
-              <span className="text-sm font-medium tracking-tight">
-                Get Started{" "}
+              <span className="text-[17px] font-medium tracking-tight flex items-center gap-1 ">
+                Join Now <ChevronRight className="w-4 h-4 font-semibold" />
               </span>
-
-              <ChevronRight className="w-4 h-4 font-medium" />
             </Button>
             <HeroImage />
           </Hero>
-          <Features />
+          <Tech />
         </div>
       </main>
+      {/* <EnjoyIssueTracking /> */}
     </div>
   );
 };

@@ -99,10 +99,11 @@ const HeroImage = () => {
           width={1280}
           height={1100}
           className={cn(
-            "relative z-10 rounded-2xl transition-opacity delay-[680ms]",
+            "relative z-10 rounded-2xl transition-opacity ",
+            "delay-[680ms]",
             inView ? "opacity-100" : "opacity-0"
           )}
-          src="/HeroImage.png"
+          src="/Hero.png"
           alt="Hero image"
         />
       </div>

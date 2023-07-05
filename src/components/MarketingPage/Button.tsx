@@ -2,7 +2,6 @@ import Link from "next/link";
 import { cva, VariantProps } from "class-variance-authority";
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 
-
 type ButtonBaseProps = VariantProps<typeof buttonClasses> & {
   children: React.ReactNode;
 };
@@ -21,7 +20,7 @@ type ButtonProps = ButtonBaseProps &
 const buttonClasses = cva("rounded-xl inline-flex items-center", {
   variants: {
     variant: {
-      primary: ["bg-primary-gradient hover:text-shadow hover:shadow-primary "],
+      primary: ["bg-primary-gradient  hover:text-shadow hover:shadow-primary "],
       secondary: [
         "text-[#f7f8f8] bg-white bg-opacity-10 border border-[rgba(255, 255, 255, 0.08)]",
       ],
@@ -29,7 +28,7 @@ const buttonClasses = cva("rounded-xl inline-flex items-center", {
     size: {
       small: "text-xs px-3 h-7",
       medium: "text-sm px-3 h-8",
-      large: "text-md px-4 h-11",
+      large: "text-lg px-5 h-12",
     },
   },
   defaultVariants: {
