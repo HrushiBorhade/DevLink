@@ -58,8 +58,10 @@ export default function NavMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem className="bg-none">
-          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+        <NavigationMenuItem className=" bg-none">
+          <NavigationMenuTrigger className="font-semibold text-primary-text hover:text-white ">
+            About
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid  gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -100,7 +102,9 @@ export default function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="font-semibold text-primary-text hover:text-white ">
+            Features
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -117,7 +121,12 @@ export default function NavMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "font-semibold text-primary-text hover:text-white "
+              )}
+            >
               Documentation
             </NavigationMenuLink>
           </Link>
