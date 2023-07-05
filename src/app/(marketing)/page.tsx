@@ -8,7 +8,7 @@ import { FC } from "react";
 import Image from "next/image";
 import HeroImage from "@/components/MarketingPage/HeroImage";
 import Tech from "@/components/MarketingPage/Tech";
-import { EnjoyIssueTracking } from "@/components/MarketingPage/sections/ShowCase";
+// import { EnjoyIssueTracking } from "@/components/MarketingPage/sections/ShowCase";
 
 interface pageProps {}
 
