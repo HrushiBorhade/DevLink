@@ -17,6 +17,40 @@
 ## Tech stack
 ![Screenshot 2023-07-07 at 11 20 26 PM](https://github.com/HrushiBorhade/DevLink/assets/89704093/e85c7467-c753-403c-9738-d10b23c17d57)
 
+## Instructions
+
+To get started with this project, run
+
+```bash
+  git clone https://github.com/HrushiBorhade/DevLink.git
+```
+Install all the packages
+
+```
+npm install
+```
+create .env file with these variables:
+
+```bash
+DATABASE_URL=
+NEXTAUTH_SECRET=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
+
+REDIS_URL=
+REDIS_SECRET=
+```
+
+
+
+Run the app
+```
+ `npm run dev`
+```
 
 ## Features and Interfaces
 
@@ -93,6 +127,7 @@
     -  User can change their username.
   
       ![Screenshot 2023-07-07 at 10 41 36 PM](https://github.com/HrushiBorhade/DevLink/assets/89704093/81c8ba6c-666e-4997-87b5-2ad828596731)
+
 
 
 
