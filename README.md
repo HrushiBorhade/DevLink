@@ -100,8 +100,8 @@ Run the app
     -  Users could comment on a post, upvote/downvote the post,each comment , reply to comment etc which increases the engagement.
 
 
-    
-  ![Screenshot 2023-07-07 at 10 38 55 PM](https://github.com/HrushiBorhade/DevLink/assets/89704093/27ca359e-3824-4da8-8148-300f82f12a2d)
+    ![Screenshot 2023-07-07 at 10 40 02 PM](https://github.com/HrushiBorhade/DevLink/assets/89704093/126c9f4c-56bb-4f1b-88b3-af0656b8a5f6)
+
 
 
 4.  Create Post Page   <a id="create-post"> </a>
@@ -121,7 +121,7 @@ Run the app
 ![Screenshot 2023-07-07 at 10 41 03 PM](https://github.com/HrushiBorhade/DevLink/assets/89704093/6832e636-f909-4f45-bc1c-16a67d05b816)
 
 
-5.  Settings Page   <a id="create-community"> </a>
+6.  Settings Page   <a id="create-community"> </a>
 
 
     -  User can change their username.
